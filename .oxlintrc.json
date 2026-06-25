@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "rules": {
+    "no-console": "error",
+    "no-control-regex": "off"
+  },
+  "ignorePatterns": [
+    "dist/**",
+    ".astro/**",
+    "public/pagefind/**"
+  ]
+}

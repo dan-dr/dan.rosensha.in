@@ -1,0 +1,129 @@
+---
+title: "What to Do with Your Leftover Tokens"
+description: "A field guide to acquiring surplus LLM tokens and the rabbit holes worth spending them on, from frog-swallowing and this very blog to reverse engineering, Docker, and the terminal."
+pubDatetime: 2026-06-25T12:55:33Z
+tags:
+  - tokenmaxxing
+featured: true
+draft: false
+---
+
+import { Image } from "astro:assets";
+import ResponsiveTable from "@/components/ResponsiveTable.astro";
+import tokenRabbitHole from "@/assets/token-rabbit-hole.png";
+
+Every now and then you finish a task early, the context window still has headroom, and the meter is nowhere near red. Most people close the tab. That is a mistake. Leftover tokens are a renewable resource, and the only real question is which rabbit hole to send the model down next.
+
+This post is part field guide, part confession. It covers where surplus tokens come from, and a ranked list of the holes I like to throw them into, including the one that produced the blog you are reading.
+
+<Image
+  src={tokenRabbitHole}
+  alt="A glowing token coin falling into a spiraling digital rabbit hole, surrounded by stray tokens, a perspective grid, and faint terminal commands."
+/>
+
+## Table of contents
+
+## The surplus: where leftover tokens come from
+
+Before you can spend tokens you have to hoard them. The supply side is less glamorous than the spending side, but it is where the whole game is won or lost.
+
+### Resets
+
+Most providers reset usage on a rolling window. A fresh context window costs you nothing but the time it takes to reload, and a reset often hands you a full budget to burn before the clock starts again. Treat resets like tides: predictable, free, and easy to waste if you are not watching.
+
+### Lenny's pass
+
+Every ecosystem has a Lenny: someone who figured out the generous tier, the educational grant, or the legacy plan that nobody advertises anymore. Finding Lenny's pass is half social engineering, half archive diving. Once you have it, guard it.
+
+> [!NOTE]
+> Lenny's pass is rarely about a single coupon code. It is usually a stack: a legacy free tier plus an unpublicized grant plus a referral credit, all valid at once. The trick is knowing which layers compose.
+
+### Startup credits
+
+Cloud and AI providers hand out credits like candy to anyone who looks vaguely like a startup. You do not need to incorporate; you need a project page and a plausible roadmap. Credits expire, so the moment they land, start a burn-down plan.
+
+### Free tiers
+
+The humble free tier is the backbone of tokenmaxxing. Small, renewable, and infinitely stackable across providers. The yield per tier is low, but the aggregate is enough to run a hobby project indefinitely.
+
+> [!TIP]
+> Keep a rotation. Spread usage across two or three providers' free tiers so a single rate limit never blocks you, and so a single ToS change never wipes you out overnight.
+
+### Auditing the budget
+
+Before you point the model at a rabbit hole, check what you actually have left. A tiny preflight script keeps you from discovering an empty tank halfway through a reversing session.
+
+```bash file="scripts/token-budget.sh"
+#!/usr/bin/env bash
+# Quick leftover-token audit before launching a rabbit hole.
+set -euo pipefail
+
+PROVIDERS=("openai" "anthropic" "local")
+
+for p in "${PROVIDERS[@]}"; do
+  # [!code highlight]
+  remaining=$(curl -sf "localhost:9999/budget/$p" | jq -r '.remaining // 0')
+  printf "%-12s %8s tokens\n" "$p" "$remaining"
+done
+
+echo "ready to descend"
+```
+
+If the audit comes back empty, do not despair. Go harvest a reset and come back.
+
+## What to spend them on
+
+This is the fun part. The rule I use: a good spend is either something you would have paid a human to do, or something you would never have started without a free, tireless collaborator.
+
+The table below is my rough ranking. Your mileage will vary, but the shape is right.
+
+<ResponsiveTable variant="striped-minimal">
+
+| Hole | Why it is worth tokens | Risk |
+| ------------------ | ----------------------------------------------------------- | --------------- |
+| Frog-swallowing | Turns dread into a draft; this blog exists because of it | Pure cope, no output |
+| Reverse engineering | Models annotate disassembly faster than you can scroll | Confident wrongness |
+| Modding software | Cheap experiments on other people's codebases | Bricking a working tool |
+| DevOps | Automate the toil you keep postponing | Over-engineering |
+| Docker | Iterate on images without a registry subscription | Layer bloat |
+| The terminal | Glue scripts, dotfiles, one-shot pipelines | Skill atrophy |
+
+</ResponsiveTable>
+
+### Frog-swallowing (productive procrastination)
+
+"Frog-swallowing" is the act of doing the thing you are avoiding by doing a different, slightly more useful thing you are also avoiding. It is procrastination with a guilt loophole. This blog is a frog-swallowing artifact: I did not want to do the real task, so I used the leftover tokens to stand up a blog with the new Factory sub, and then to write this post about standing up the blog.
+
+> [!WARNING]
+> Frog-swallowing feels productive because it produces artifacts, but it is still avoidance. Timebox it. A blog built on procrastination is fine; a career built on it is not.
+
+### Reverse engineering
+
+A model with leftover budget is a fantastic annotation engine. Paste a function, ask for a guess at the original source, and then verify. It will be wrong in revealing ways, and the wrongness is the lesson.
+
+### Modding existing software
+
+Most software is more malleable than its authors admit. Spend tokens generating patches against a codebase you already run: a new flag, a tweaked default, a hook the maintainer will never accept upstream. Apply locally, keep a diff, move on.
+
+### DevOps
+
+The toil you keep meaning to automate is exactly the shape of work that tokens are good at: boring, stateful, and bounded. Have the model draft the runbook, the migration script, or the alert rule, then review it yourself before it touches anything real.
+
+### Docker
+
+Dockerfiles are a target-rich environment for leftover tokens. Generate a slimmer image, propose a multi-stage refactor, or just have the model explain why your layer cache keeps invalidating.
+
+### The terminal
+
+The highest-leverage spend is the smallest one: glue. A fifteen-line shell script that saves you thirty seconds a day pays for itself in a week. Spend tokens on dotfiles, aliases, and the one-shot pipeline you have always meant to write.
+
+```bash file="~/.tokenmaxxrc"
+# before tokens: prudent
+alias spend="echo 'saving tokens for later'" # [!code --]
+# after tokens: descending
+alias spend="curl -s localhost:9999/rabbit-hole | sh" # [!code ++]
+```
+
+## Closing remarks
+
+Leftover tokens are not a bug in the pricing model; they are a budget for curiosity. Hoard them, audit them, and then spend them on a hole deep enough to teach you something. If you are reading this on the blog it built, you already know which one I picked.
