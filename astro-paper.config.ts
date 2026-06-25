@@ -30,7 +30,7 @@ export default defineAstroPaperConfig({
   },
   socials: [
     { name: "github", url: "https://github.com/dan-dr" },
-    { name: "mail",   url: "mailto:dan@rosenshain.in" },
+    { name: "mail",   url: "mailto:dan@rosensha.in" },
   ],
   shareLinks: [
     { name: "whatsapp", url: "https://wa.me/?text=" },
