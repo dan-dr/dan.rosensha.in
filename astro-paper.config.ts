@@ -4,7 +4,7 @@ export default defineAstroPaperConfig({
   site: {
     url: "https://dan.rosensha.in/",
     title: "Dan Rosenshain",
-    description: "Notes on reverse engineering, devops, Docker, the terminal, and sending LLMs down rabbit holes.",
+    description: "Notes on AI, product engineering, parenting, entrepreneurship, and more.",
     author: "Dan Rosenshain",
     profile: "https://dan.rosensha.in/",
     ogImage: "default-og.jpg",
@@ -29,7 +29,9 @@ export default defineAstroPaperConfig({
     search: "pagefind",
   },
   socials: [
+    { name: "x",   url: "https://x.com/dan_ddyo" },
     { name: "github", url: "https://github.com/dan-dr" },
+    { name: "linkedin", url: "https://www.linkedin.com/in/danr4/" },
     { name: "mail",   url: "mailto:dan@rosensha.in" },
   ],
   shareLinks: [

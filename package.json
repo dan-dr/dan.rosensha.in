@@ -13,8 +13,7 @@
     "astro": "astro",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "lint": "oxlint --deny-warnings src",
-    "astrocms": "astrocms"
+    "lint": "oxlint --deny-warnings src"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.1",
@@ -40,7 +39,6 @@
     "@shikijs/transformers": "^4.1.0",
     "@tailwindcss/typography": "^0.5.19",
     "@types/lodash.kebabcase": "^4.1.9",
-    "astrocms": "^0.1.3",
     "oxlint": "^1.16.0",
     "pagefind": "^1.5.2",
     "prettier": "3.8.3",

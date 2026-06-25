@@ -14,7 +14,6 @@ Personal blog of Dan Rosenshain, built with [AstroPaper v6](https://github.com/s
 - [Tailwind CSS](https://tailwindcss.com/) — styling
 - [Pagefind](https://pagefind.app/) — static site search
 - [Shiki](https://shiki.style/) — syntax highlighting
-- [AstroCMS](https://www.astrocms.dev/) — local content editing (dev only)
 
 ## Prerequisites
 
@@ -32,9 +31,7 @@ pnpm preview     # preview the production build locally
 
 ## Content Management
 
-Content lives in `src/content/`. AstroCMS 0.1.3 runs in local project mode for development convenience — start it with `pnpm astrocms` and open http://localhost:4001/astrocms.
-
-> Note: the AstroCMS rich-text UI can corrupt component-heavy MDX. For posts that use components, prefer editing the source files directly via the CMS file API or your editor.
+Content lives in `src/content/`. Edit pages and posts directly in your editor or with [Astro Editor](https://astroeditor.danny.is/), a schema-aware desktop Markdown/MDX editor for Astro content collections.
 
 ## Linting & Type Checking
 
