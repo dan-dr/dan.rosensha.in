@@ -1,8 +1,18 @@
 ---
-title: "About"
-description: "About Dan Rosenshain and this blog."
+title: About
+description: About Dan Rosenshain and this blog.
 ---
 
-Hi, I'm Dan Rosenshain. I write about reverse engineering, devops, Docker, the terminal, and the occasional rabbit hole I send an LLM down.
+<img height="223" width="167" alt="Me and me kids" src="./WhatsApp Image 2026-06-17 at 08.59.01.jpeg" />Father of 2 (born 2023 and 2026).
 
-This is where I keep notes on things I've built, broken, and figured out along the way.
+Generalist dev for 20 years.
+
+Bootstrapped [BestHosting Networks](https://besthosting.network) to 6-figure ARR.
+
+Co-founder & CTO of [Gankster](https://gankster.gg). 10M+ users, raised $10M. Left in 2026 to do more AI.
+
+I write about development, AI, psychology, ADHD, health, entrepreneurship, and whatever else comes to mind.
+
+
+
+Find my open source projects in [my github](https://github.com/dan-dr)
